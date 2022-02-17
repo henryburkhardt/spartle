@@ -1,11 +1,11 @@
 .square {
-  color: rgb(41, 41, 41);
+  color: rgb(184, 184, 184);
   width: 70px;
   height: 70px;
   caret-color: transparent;
   font-size: 30px;
   text-align: center;
-  border: 1px solid rgb(42, 42, 42);
+  border: 3px solid rgb(70, 70, 70);
   margin: 3px;
   text-transform: uppercase;
   font-family: Arial, Helvetica, sans-serif;
@@ -13,22 +13,27 @@
 }
 
 .square:focus {
-  border: 1px solid rgb(42, 42, 42);
+  border: 3px solid rgb(70, 70, 70);
   border-radius: 0px;
   outline: none;
 }
 
 .all_correct {
-  background-color: rgb(164, 233, 117);
-  border: 1px solid rgb(164, 233, 117);
+  background-color: rgb(56, 105, 55);
+  border: 3px solid rgb(56, 105, 55);
 }
 
 .one_correct {
-  background-color: rgb(237, 241, 18);
-  border: 1px solid rgb(237, 241, 18);
+  background-color: rgb(137, 139, 28);
+  border: 3px solid rgb(137, 139, 28);
 }
 
 .incorrect {
   background-color: rgb(51, 51, 51);
-  border: 1px solid rgb(51, 51, 51);
+  border: 3px solid rgb(51, 51, 51);
+}
+
+input[type="text"] {
+  -webkit-appearance: none;
+  border-radius: 0;
 }

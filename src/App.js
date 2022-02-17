@@ -5,7 +5,9 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <h1 className="title">RubiWorlde</h1>
+      <div className="header">
+        <h1 className="title">SPARTLE</h1>
+      </div>
       <Game />
     </div>
   );

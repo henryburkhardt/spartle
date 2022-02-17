@@ -42,13 +42,13 @@ class Row extends Component {
     if (this.state.focus === this.wordLen - 1 && !this.props.freeze) {
       const real = this.lookUpWord(this.state.guessStr);
       if (this.state.guessStr == this.props.word) {
-        alert("congrats!");
+        this.props.correct();
         this.setState({
           check: true,
         });
         return;
       } else if (!real) {
-        alert("not a real word");
+        this.props.wordNotFound();
       } else {
         this.setState({
           check: true,

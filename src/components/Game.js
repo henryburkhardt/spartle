@@ -1,6 +1,11 @@
 import { Component } from "react";
 import Row from "./Row";
 import words from "../words.json";
+import { ToastContainer, toast } from "react-toastify";
+import Timer from "./Timer";
+import "./css/Game.css";
+import "react-toastify/dist/ReactToastify.css";
+
 const guesses = 6;
 let word;
 class Game extends Component {
@@ -25,6 +30,30 @@ class Game extends Component {
     });
   }
 
+  wordNotFound() {
+    toast.warning("Word does not exist!", {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+    });
+  }
+
+  correct() {
+    toast.success("Nice job! Wordle correct.", {
+      position: "top-center",
+      autoClose: false,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+    });
+  }
+
   render() {
     this.getWord();
     let rows = [];
@@ -41,10 +70,35 @@ class Game extends Component {
           key={i}
           freeze={freeze}
           nextRow={() => this.nextRow()}
+          wordNotFound={() => this.wordNotFound()}
+          correct={() => this.correct()}
         />
       );
     }
-    return <div>{rows}</div>;
+
+    return (
+      <div className="game">
+        <div className="timer">
+          <Timer />
+        </div>
+        <div className="toast">
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+          {/* Same as */}
+          <ToastContainer />
+        </div>
+        <div>{rows}</div>
+      </div>
+    );
   }
 }
 
