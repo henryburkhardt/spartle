@@ -1,0 +1,34 @@
+.square {
+  color: rgb(41, 41, 41);
+  width: 40px;
+  height: 40px;
+  caret-color: transparent;
+  font-size: 30px;
+  text-align: center;
+  border: 1px solid rgb(42, 42, 42);
+  margin: 3px;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 550;
+}
+
+.square:focus {
+  border: 1px solid rgb(42, 42, 42);
+  border-radius: 0px;
+  outline: none;
+}
+
+.all_correct {
+  background-color: rgb(164, 233, 117);
+  border: 1px solid rgb(164, 233, 117);
+}
+
+.one_correct {
+  background-color: rgb(237, 241, 18);
+  border: 1px solid rgb(237, 241, 18);
+}
+
+.incorrect {
+  background-color: rgb(51, 51, 51);
+  border: 1px solid rgb(51, 51, 51);
+}

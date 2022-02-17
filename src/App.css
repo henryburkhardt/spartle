@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@500&family=Source+Code+Pro:wght@500&display=swap");
+
+.title {
+  font-family: "Roboto Serif", sans-serif;
+}
+
 .App {
   text-align: center;
 }
