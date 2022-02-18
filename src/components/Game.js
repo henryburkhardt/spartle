@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import Timer from "./Timer";
 import "./css/Game.css";
 import "react-toastify/dist/ReactToastify.css";
+import Keyboard from "./Keyboard";
 
 const guesses = 6;
 let word;
@@ -12,6 +13,9 @@ class Game extends Component {
   state = {
     curRow: 0,
     date: "",
+    incorrectLetters: [],
+    allcorrectLetters: [],
+    incorrectLetters: [],
   };
 
   getWord() {
@@ -23,7 +27,8 @@ class Game extends Component {
     word = words[newdate];
   }
 
-  nextRow() {
+  nextRow(guess) {
+    console.log(guess);
     const nrow = this.state.curRow + 1;
     this.setState({
       curRow: nrow,
@@ -69,7 +74,7 @@ class Game extends Component {
           word={word}
           key={i}
           freeze={freeze}
-          nextRow={() => this.nextRow()}
+          nextRow={(x) => this.nextRow(x)}
           wordNotFound={() => this.wordNotFound()}
           correct={() => this.correct()}
         />
@@ -78,9 +83,7 @@ class Game extends Component {
 
     return (
       <div className="game">
-        <div className="timer">
-          <Timer />
-        </div>
+        <div className="timer">{/* <Timer /> */}</div>
         <div className="toast">
           <ToastContainer
             position="top-right"
@@ -97,6 +100,9 @@ class Game extends Component {
           <ToastContainer />
         </div>
         <div>{rows}</div>
+        <div className="Footer">
+          <a href="https://github.com/henryburkhardt/spartle">View the Code</a>
+        </div>
       </div>
     );
   }

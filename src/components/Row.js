@@ -15,6 +15,9 @@ class Row extends Component {
     allCorrect: false,
     guessArr: Array(this.wordLen),
     guessStr: "",
+    correct: [],
+    partial: [],
+    incorrect: [],
   };
   nextSpace() {
     const focus = this.state.focus + 1;
@@ -42,18 +45,23 @@ class Row extends Component {
     if (this.state.focus === this.wordLen - 1 && !this.props.freeze) {
       const real = this.lookUpWord(this.state.guessStr);
       if (this.state.guessStr == this.props.word) {
+        //word is correct
         this.props.correct();
         this.setState({
           check: true,
         });
         return;
       } else if (!real) {
+        //word is invalid
         this.props.wordNotFound();
       } else {
+        // word is valid, not correct
         this.setState({
           check: true,
         });
-        this.props.nextRow();
+        const x = this.state.guessArr;
+        console.log(x);
+        this.props.nextRow(x);
       }
     }
   }

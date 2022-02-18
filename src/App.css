@@ -28,3 +28,8 @@ body {
   padding-bottom: 8px;
   margin-bottom: 10px;
 }
+
+.game {
+  height: 60vh;
+  overflow-y: auto;
+}
