@@ -1,7 +1,7 @@
 .square {
   color: rgb(184, 184, 184);
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   caret-color: transparent;
   font-size: 30px;
   text-align: center;
@@ -10,6 +10,7 @@
   text-transform: uppercase;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 550;
+  display: inline-block;
 }
 
 .square:focus {

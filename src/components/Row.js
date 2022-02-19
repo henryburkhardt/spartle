@@ -101,7 +101,7 @@ class Row extends Component {
         />
       );
     }
-    return <div>{squares}</div>;
+    return <div className="Row">{squares}</div>;
   }
 }
 

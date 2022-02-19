@@ -7,3 +7,10 @@
   color: grey;
   text-decoration: underline;
 }
+
+.Row {
+  display: inline-block;
+  white-space: nowrap;
+  /* overflow-x: auto; */
+  width: 100%;
+}
