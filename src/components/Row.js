@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Square from "./Square.js";
 import dictionary from "../dictionary.json";
+import words from "../words.json";
 
 class Row extends Component {
   constructor(props) {
@@ -33,9 +34,13 @@ class Row extends Component {
   }
 
   lookUpWord(word) {
+    for (let i = 0; i < words.length; i++) {
+      if (words[i] === word) {
+        return true;
+      }
+    }
     for (let i = 0; i < dictionary.length; i++) {
       if (dictionary[i] === word) {
-        console.log(i);
         return true;
       }
     }
@@ -44,7 +49,7 @@ class Row extends Component {
   submit() {
     if (this.state.focus === this.wordLen - 1 && !this.props.freeze) {
       const real = this.lookUpWord(this.state.guessStr);
-      if (this.state.guessStr == this.props.word) {
+      if (this.state.guessStr === this.props.word) {
         //word is correct
         this.props.correct();
         this.setState({
@@ -59,9 +64,8 @@ class Row extends Component {
         this.setState({
           check: true,
         });
-        const x = this.state.guessArr;
-        console.log(x);
-        this.props.nextRow(x);
+        const guess = this.state.guessArr;
+        this.props.nextRow(guess);
       }
     }
   }
@@ -78,7 +82,7 @@ class Row extends Component {
     let squares = [];
     for (let i = 0; i < this.wordLen; i++) {
       let status = 0;
-      if (this.state.focus == i) {
+      if (this.state.focus === i) {
         status = true;
       } else {
         status = false;

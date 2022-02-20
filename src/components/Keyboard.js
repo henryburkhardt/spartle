@@ -12,14 +12,26 @@ class Keyboard extends Component {
   setKey() {
     console.log("set");
   }
+
+  getClass(letter) {
+    if (this.props.correct.includes(letter)) {
+      return "Key correct";
+    } else if (this.props.partial.includes(letter)) {
+      return "Key partial";
+    } else if (this.props.incorrect.includes(letter)) {
+      return "Key incorrect";
+    } else {
+      return "Key";
+    }
+  }
   render() {
     let row1 = [];
     let row2 = [];
-    let row3 = [<Key letter="↩" key="Enter" />];
+    let row3 = [<Key letter="⌫" key="Delete" buttonClass="extraButton" />];
     for (let char of this.row1Char) {
       row1.push(
         <Key
-          className="Key"
+          buttonClass={this.getClass(char)}
           letter={char}
           key={char}
           setKey={() => this.setKey()}
@@ -29,7 +41,7 @@ class Keyboard extends Component {
     for (let char of this.row2Char) {
       row2.push(
         <Key
-          className="Key"
+          buttonClass={this.getClass(char)}
           letter={char}
           key={char}
           setKey={() => this.setKey()}
@@ -39,7 +51,7 @@ class Keyboard extends Component {
     for (let char of this.row3Char) {
       row3.push(
         <Key
-          className="Key"
+          buttonClass={this.getClass(char)}
           letter={char}
           key={char}
           setKey={() => this.setKey()}
@@ -47,7 +59,7 @@ class Keyboard extends Component {
       );
     }
 
-    row3.push(<Key letter="⌫" key="Del" />);
+    row3.push(<Key letter="ENTER" key="Enter" buttonClass="extraButton" />);
 
     return (
       <div className="keyBoard">

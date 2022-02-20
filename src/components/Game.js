@@ -3,7 +3,7 @@ import Row from "./Row";
 import words from "../words.json";
 import { ToastContainer, toast } from "react-toastify";
 import Timer from "./Timer";
-import "./css/Game.css";
+import "./Game.css";
 import "react-toastify/dist/ReactToastify.css";
 import Keyboard from "./Keyboard";
 
@@ -13,9 +13,11 @@ class Game extends Component {
   state = {
     curRow: 0,
     date: "",
-    incorrectLetters: [],
-    allcorrectLetters: [],
-    incorrectLetters: [],
+    letters: {
+      incorrectLetters: Array(0),
+      allcorrectLetters: Array(0),
+      partialCorrectLetter: Array(0),
+    },
   };
 
   getWord() {
@@ -29,6 +31,30 @@ class Game extends Component {
 
   nextRow(guess) {
     console.log(guess);
+    let incorrect = this.state.letters.incorrectLetters;
+    let allcorrect = this.state.letters.allcorrectLetters;
+    let partialcorrect = this.state.letters.partialCorrectLetter;
+
+    for (let i = 0; i < guess.length; i++) {
+      if (word.split("")[i] === guess[i]) {
+        allcorrect.push(guess[i]);
+      } else if (word.split("").includes(guess[i])) {
+        partialcorrect.push(guess[i]);
+      } else {
+        incorrect.push(guess[i]);
+      }
+    }
+
+    console.log(incorrect);
+
+    this.setState({
+      letters: {
+        incorrectLetters: incorrect,
+        allcorrectLetters: allcorrect,
+        partialCorrectLetter: partialcorrect,
+      },
+    });
+    console.log(this.state.letters);
     const nrow = this.state.curRow + 1;
     this.setState({
       curRow: nrow,
@@ -83,7 +109,6 @@ class Game extends Component {
 
     return (
       <div className="game">
-        <div className="timer">{/* <Timer /> */}</div>
         <div className="toast">
           <ToastContainer
             position="top-right"
@@ -100,9 +125,11 @@ class Game extends Component {
           <ToastContainer />
         </div>
         <div>{rows}</div>
-        <div className="Footer">
-          <a href="https://github.com/henryburkhardt/spartle">View the Code</a>
-        </div>
+        <Keyboard
+          incorrect={this.state.letters.incorrectLetters}
+          correct={this.state.letters.allcorrectLetters}
+          partial={this.state.letters.partialCorrectLetter}
+        />
       </div>
     );
   }

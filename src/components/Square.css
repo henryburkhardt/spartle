@@ -1,5 +1,5 @@
 .square {
-  color: rgb(184, 184, 184);
+  color: var(--color-input-text);
   width: 60px;
   height: 60px;
   caret-color: transparent;
@@ -20,18 +20,18 @@
 }
 
 .all_correct {
-  background-color: rgb(56, 105, 55);
-  border: 3px solid rgb(56, 105, 55);
+  background-color: var(--color-correct);
+  border: 3px solid var(--color-correct);
 }
 
 .one_correct {
-  background-color: rgb(137, 139, 28);
-  border: 3px solid rgb(137, 139, 28);
+  background-color: var(--color-partial);
+  border: 3px solid var(--color-partial);
 }
 
 .incorrect {
-  background-color: rgb(51, 51, 51);
-  border: 3px solid rgb(51, 51, 51);
+  background-color: var(--color-incorrect);
+  border: 3px solid var(--color-incorrect);
 }
 
 input[type="text"] {

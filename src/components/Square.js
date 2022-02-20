@@ -1,5 +1,5 @@
 import { Component, createRef } from "react";
-import "./css/Square.css";
+import "./Square.css";
 
 class Square extends Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class Square extends Component {
   handleChange = (e) => {};
 
   componentDidMount() {
-    if (this.props.position == 0 && !this.props.freeze && !this.props.check) {
+    if (this.props.position === 0 && !this.props.freeze && !this.props.check) {
       this.inputReference.current.focus();
       this.setState({
         disabled: false,
