@@ -14,13 +14,15 @@ function App() {
       </Helmet>
       <div className="header">
         <div className="header-left">
-          <a href="https://github.com/henryburkhardt/spartle">
+          <a href="https://github.com/henryburkhardt/spartle" target="_blank">
             <FontAwesomeIcon icon={faCode} />
           </a>
         </div>
         <h1 className="title">Spartle</h1>
         <div className="header-right">
-          <FontAwesomeIcon icon={faQuestionCircle} />
+          <a href="https://github.com/henryburkhardt/spartle" target="_blank">
+            <FontAwesomeIcon icon={faQuestionCircle} />
+          </a>
         </div>
       </div>
       <Game className="game" />
