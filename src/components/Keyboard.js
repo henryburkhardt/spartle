@@ -9,8 +9,8 @@ class Keyboard extends Component {
     this.row3Char = ["z", "x", "c", "v", "b", "n", "m"];
   }
 
-  setKey() {
-    console.log("set");
+  setKey(letter) {
+    console.log(letter);
   }
 
   getClass(letter) {
@@ -34,7 +34,7 @@ class Keyboard extends Component {
           buttonClass={this.getClass(char)}
           letter={char}
           key={char}
-          setKey={() => this.setKey()}
+          setKey={(letter) => this.setKey(letter)}
         />
       );
     }
@@ -44,7 +44,7 @@ class Keyboard extends Component {
           buttonClass={this.getClass(char)}
           letter={char}
           key={char}
-          setKey={() => this.setKey()}
+          setKey={(letter) => this.setKey(letter)}
         />
       );
     }
@@ -54,7 +54,7 @@ class Keyboard extends Component {
           buttonClass={this.getClass(char)}
           letter={char}
           key={char}
-          setKey={() => this.setKey()}
+          setKey={(letter) => this.setKey(letter)}
         />
       );
     }

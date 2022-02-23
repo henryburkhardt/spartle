@@ -11,6 +11,7 @@ class Square extends Component {
     classes: "",
     disabled: true,
   };
+
   handleKeyDown = (e) => {
     if (this.props.check) {
       return;
@@ -19,10 +20,10 @@ class Square extends Component {
     if (e.key === "Enter") {
       this.props.submit();
     } else if (e.key === "Backspace") {
+      this.props.backSpace(this.props.position);
       this.setState({
         content: "",
       });
-      this.props.backSpace(this.props.position);
     }
 
     const value = e.key.toLowerCase();

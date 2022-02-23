@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Bitter:wght@800;900&family=Roboto+Serif:wght@700&family=Source+Code+Pro:wght@500&display=swap");
 :root {
-  --color-correct: rgb(56, 105, 55);
-  --color-partial: rgb(137, 139, 28);
-  --color-incorrect: rgb(51, 51, 51);
+  --color-correct: rgb(84, 161, 83);
+  --color-partial: rgb(193, 196, 45);
+  --color-incorrect: rgb(131, 131, 131);
   --color-accent: rgb(13, 47, 102);
-  --color-input-text: rgb(184, 184, 184);
+  --color-input-text: rgb(51, 51, 51);
 }
 * {
   margin: 0;
@@ -16,7 +16,7 @@
 }
 
 body {
-  background-color: rgb(27, 27, 27);
+  background-color: rgb(255, 255, 255);
 }
 
 .App {
@@ -29,7 +29,7 @@ body {
 }
 
 .header {
-  background-color: rgb(27, 27, 27);
+  background-color: white;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 10px;

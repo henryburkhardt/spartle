@@ -1,7 +1,7 @@
 .square {
   color: var(--color-input-text);
-  width: 60px;
-  height: 60px;
+  width: 54px;
+  height: 54px;
   caret-color: transparent;
   font-size: 30px;
   text-align: center;

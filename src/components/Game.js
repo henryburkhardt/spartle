@@ -125,11 +125,11 @@ class Game extends Component {
           <ToastContainer />
         </div>
         <div>{rows}</div>
-        <Keyboard
+        {/* <Keyboard
           incorrect={this.state.letters.incorrectLetters}
           correct={this.state.letters.allcorrectLetters}
           partial={this.state.letters.partialCorrectLetter}
-        />
+        /> */}
       </div>
     );
   }

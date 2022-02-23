@@ -8,6 +8,7 @@ class Row extends Component {
     super(props);
     this.wordLen = this.props.word.split("").length;
   }
+
   state = {
     focus: 0,
     check: false,
