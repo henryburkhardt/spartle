@@ -2,9 +2,10 @@ import { Component } from "react";
 import Row from "./Row";
 import words from "../words.json";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Timer from "./Timer";
 import "./Game.css";
-import "react-toastify/dist/ReactToastify.css";
+
 import Keyboard from "./Keyboard";
 
 const guesses = 6;
@@ -63,6 +64,7 @@ class Game extends Component {
       pauseOnHover: true,
       draggable: false,
       progress: undefined,
+      toastId: "notfound",
     });
   }
 
@@ -75,6 +77,7 @@ class Game extends Component {
       pauseOnHover: true,
       draggable: false,
       progress: undefined,
+      toastId: "correct",
     });
   }
 
@@ -91,6 +94,7 @@ class Game extends Component {
       pauseOnHover: true,
       draggable: false,
       progress: undefined,
+      toastId: "over",
     });
   }
 
@@ -120,21 +124,12 @@ class Game extends Component {
 
     return (
       <div className="game">
-        <div className="toast">
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
-          {/* Same as */}
-          <ToastContainer />
-        </div>
+        <ToastContainer
+          position="top-right"
+          hideProgressBar={false}
+          closeOnClick
+        />
+        <ToastContainer />
         <div>{rows}</div>
         {/* <Keyboard
           incorrect={this.state.letters.incorrectLetters}

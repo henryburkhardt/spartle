@@ -1,7 +1,6 @@
 import { Component } from "react";
 import Square from "./Square.js";
 import dictionary from "../dictionary.json";
-import words from "../words.json";
 
 class Row extends Component {
   constructor(props) {
@@ -35,12 +34,6 @@ class Row extends Component {
   }
 
   lookUpWord(word) {
-    console.log(words);
-    for (let i = 0; i < words.length; i++) {
-      if (words[i] === word) {
-        return true;
-      }
-    }
     for (let i = 0; i < dictionary.length; i++) {
       if (dictionary[i] === word) {
         return true;
@@ -48,6 +41,7 @@ class Row extends Component {
     }
     return false;
   }
+
   submit() {
     if (this.state.focus === this.wordLen - 1 && !this.props.freeze) {
       const real = this.lookUpWord(this.state.guessStr);
