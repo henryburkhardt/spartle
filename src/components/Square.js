@@ -90,7 +90,7 @@ class Square extends Component {
         maxLength={1}
         onKeyDown={this.handleKeyDown.bind(this)}
         onChange={this.handleChange}
-        disabled={!this.props.focus}
+        // disabled={!this.props.focus}
         ref={this.inputReference}
         value={this.state.content}
         onClick={(e) => this.handleClick(e)}
