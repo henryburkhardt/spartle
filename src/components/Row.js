@@ -35,6 +35,7 @@ class Row extends Component {
   }
 
   lookUpWord(word) {
+    console.log(words);
     for (let i = 0; i < words.length; i++) {
       if (words[i] === word) {
         return true;
