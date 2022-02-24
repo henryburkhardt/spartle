@@ -85,6 +85,22 @@ class Game extends Component {
     });
   }
 
+  gameOver() {
+    const message =
+      "😢 You've used up all your guesses. The Spartle today was \"" +
+      word +
+      '"';
+    toast(message, {
+      position: "top-center",
+      autoClose: false,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+    });
+  }
+
   render() {
     this.getWord();
     let rows = [];
@@ -99,10 +115,12 @@ class Game extends Component {
         <Row
           word={word}
           key={i}
+          rowPosition={i}
           freeze={freeze}
           nextRow={(x) => this.nextRow(x)}
           wordNotFound={() => this.wordNotFound()}
           correct={() => this.correct()}
+          gameOver={() => this.gameOver()}
         />
       );
     }

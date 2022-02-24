@@ -65,8 +65,13 @@ class Row extends Component {
         this.setState({
           check: true,
         });
-        const guess = this.state.guessArr;
-        this.props.nextRow(guess);
+        if (this.props.rowPosition === 5) {
+          console.log("youhave Failed");
+          this.props.gameOver();
+        } else {
+          const guess = this.state.guessArr;
+          this.props.nextRow(guess);
+        }
       }
     }
   }
@@ -83,11 +88,13 @@ class Row extends Component {
     let squares = [];
     for (let i = 0; i < this.wordLen; i++) {
       let status = 0;
+
       if (this.state.focus === i) {
         status = true;
       } else {
         status = false;
       }
+
       let letter = this.props.word[i];
 
       squares.push(
