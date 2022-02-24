@@ -54,12 +54,13 @@ class Square extends Component {
     }
   }
 
+  handleClick(e) {
+    e.preventDefault();
+    console.log("ck");
+  }
   componentDidUpdate() {
     if (this.props.focus && !this.props.freeze && !this.props.check) {
       this.inputReference.current.focus();
-      // this.setState({
-      //   disabled: false,
-      // });
     }
   }
 
@@ -89,9 +90,10 @@ class Square extends Component {
         maxLength={1}
         onKeyDown={this.handleKeyDown.bind(this)}
         onChange={this.handleChange}
-        //disabled={this.state.disabled}
+        disabled={!this.props.focus}
         ref={this.inputReference}
         value={this.state.content}
+        onClick={(e) => this.handleClick(e)}
       ></input>
     );
   }

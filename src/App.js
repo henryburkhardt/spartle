@@ -14,7 +14,7 @@ function App() {
       "Welcome to Spartle! Spartle is an open source clone of the popular game Wordle, personalized for SPA. A new Spartle word (relating to SPA) will be set every week day.",
       {
         position: "top-center",
-        autoClose: 7000,
+        autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: false,
         draggable: false,
