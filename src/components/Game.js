@@ -30,7 +30,6 @@ class Game extends Component {
   }
 
   nextRow(guess) {
-    console.log(guess);
     let incorrect = this.state.letters.incorrectLetters;
     let allcorrect = this.state.letters.allcorrectLetters;
     let partialcorrect = this.state.letters.partialCorrectLetter;
@@ -45,8 +44,6 @@ class Game extends Component {
       }
     }
 
-    console.log(incorrect);
-
     this.setState({
       letters: {
         incorrectLetters: incorrect,
@@ -54,7 +51,6 @@ class Game extends Component {
         partialCorrectLetter: partialcorrect,
       },
     });
-    console.log(this.state.letters);
     const nrow = this.state.curRow + 1;
     this.setState({
       curRow: nrow,

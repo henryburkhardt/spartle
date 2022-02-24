@@ -66,7 +66,6 @@ class Row extends Component {
           check: true,
         });
         if (this.props.rowPosition === 5) {
-          console.log("youhave Failed");
           this.props.gameOver();
         } else {
           const guess = this.state.guessArr;
