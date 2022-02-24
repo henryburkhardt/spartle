@@ -69,7 +69,7 @@ class Game extends Component {
   }
 
   correct() {
-    toast.success("Nice job! Wordle correct.", {
+    toast.success("Nice job! Spartle correct.", {
       position: "top-center",
       autoClose: false,
       hideProgressBar: true,
