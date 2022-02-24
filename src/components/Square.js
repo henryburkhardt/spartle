@@ -68,13 +68,13 @@ class Square extends Component {
     if (this.props.check) {
       if (this.props.letter === this.state.content) {
         //all correct
-        classes = "square all_correct";
+        classes = "square all_correct animate";
       } else if (this.props.word.includes(this.state.content)) {
         //partial correct
-        classes = "square one_correct";
+        classes = "square one_correct animate";
       } else {
         //not correct
-        classes = "square incorrect";
+        classes = "square incorrect animate";
       }
     } else {
       classes = "square";
