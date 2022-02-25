@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Key from "./Key";
+import "./Keyboard.css";
 
 class Keyboard extends Component {
   constructor(props) {
@@ -10,24 +11,31 @@ class Keyboard extends Component {
   }
 
   setKey(letter) {
-    console.log(letter);
+    this.props.setKey(letter);
   }
 
   getClass(letter) {
     if (this.props.correct.includes(letter)) {
-      return "Key correct";
+      return "game-keyboard-key game-keyboard-key-correct";
     } else if (this.props.partial.includes(letter)) {
-      return "Key partial";
+      return "game-keyboard-key  game-keyboard-key-partial";
     } else if (this.props.incorrect.includes(letter)) {
-      return "Key incorrect";
+      return "game-keyboard-key  game-keyboard-key-incorrect";
     } else {
-      return "Key";
+      return "game-keyboard-key";
     }
   }
   render() {
     let row1 = [];
     let row2 = [];
-    let row3 = [<Key letter="⌫" key="Delete" buttonClass="extraButton" />];
+    let row3 = [
+      <Key
+        letter="ENTER"
+        key="Enter"
+        buttonClass="extraButton"
+        setKey={(letter) => this.setKey(letter)}
+      />,
+    ];
     for (let char of this.row1Char) {
       row1.push(
         <Key
@@ -59,10 +67,17 @@ class Keyboard extends Component {
       );
     }
 
-    row3.push(<Key letter="ENTER" key="Enter" buttonClass="extraButton" />);
+    row3.push(
+      <Key
+        letter="DEL"
+        key="Delete"
+        buttonClass="extraButton"
+        setKey={(letter) => this.setKey(letter)}
+      />
+    );
 
     return (
-      <div className="keyBoard">
+      <div className="game-keyboard">
         <div className="row1">{row1}</div>
         <div className="row2">{row2}</div>
         <div className="row3">{row3}</div>

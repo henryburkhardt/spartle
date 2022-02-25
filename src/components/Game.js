@@ -1,6 +1,7 @@
 import { Component } from "react";
+import Keyboard from "./Keyboard/Keyboard";
 import Row from "./Row";
-import words from "../words.json";
+import words from "../json/words.json";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Game.css";
@@ -97,13 +98,25 @@ class Game extends Component {
     });
   }
 
+  setKey(letter) {
+    if (letter === "DEL") {
+      this.refs.activeRow.backSpace();
+    } else if (letter === "ENTER") {
+      this.refs.activeRow.submit();
+    } else {
+      this.refs.activeRow.handleLetter(letter);
+    }
+  }
+
   render() {
     this.getWord();
     let rows = [];
     for (let i = 0; i < 6; i++) {
       let freeze;
+      let ref;
       if (i === this.state.curRow) {
         freeze = false;
+        ref = "activeRow";
       } else {
         freeze = true;
       }
@@ -111,7 +124,7 @@ class Game extends Component {
       rows.push(
         <Row
           key={i}
-          currentKey={this.props.currentKey}
+          ref={ref}
           word={word}
           wordLength={word.split("").length}
           rowPosition={i}
@@ -124,6 +137,18 @@ class Game extends Component {
       );
     }
 
+    let keyboard;
+    if (this.props.showKeyboard) {
+      keyboard = (
+        <Keyboard
+          incorrect={this.state.letters.incorrectLetters}
+          correct={this.state.letters.allcorrectLetters}
+          partial={this.state.letters.partialCorrectLetter}
+          setKey={(letter) => this.setKey(letter)}
+        />
+      );
+    }
+
     return (
       <div className="game">
         <ToastContainer
@@ -132,11 +157,7 @@ class Game extends Component {
           closeOnClick
         />
         {rows}
-        {/* <Keyboard
-          incorrect={this.state.letters.incorrectLetters}
-          correct={this.state.letters.allcorrectLetters}
-          partial={this.state.letters.partialCorrectLetter}
-        /> */}
+        {keyboard}
       </div>
     );
   }

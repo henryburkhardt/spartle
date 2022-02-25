@@ -48,7 +48,7 @@ class App extends Component {
             </a>
           </div>
         </div>
-        <Game />
+        <Game showKeyboard={true} />
       </div>
     );
   }

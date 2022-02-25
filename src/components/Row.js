@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Square from "./Square.js";
-import dictionary from "../dictionary.json";
+import dictionary from "../json/dictionary.json";
 import React, { useEffect } from "react";
 import KeyLisitner from "./KeyListiner.js";
 
@@ -93,16 +93,20 @@ class Row extends Component {
       return;
     } else {
       const key = e.key.toLowerCase();
-      const guess = this.state.guessArr;
-      if (this.state.guessArr.length < this.props.wordLength) {
-        guess.push(key);
-      }
-      this.setState({
-        currentKey: key,
-        guessArr: guess,
-      });
-      this.nextSpace();
+      this.handleLetter(key);
     }
+  }
+
+  handleLetter(key) {
+    const guess = this.state.guessArr;
+    if (this.state.guessArr.length < this.props.wordLength) {
+      guess.push(key);
+    }
+    this.setState({
+      currentKey: key,
+      guessArr: guess,
+    });
+    this.nextSpace();
   }
 
   render() {

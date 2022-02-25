@@ -2,10 +2,11 @@
 :root {
   --color-correct: rgb(84, 161, 83);
   --color-partial: rgb(193, 196, 45);
-  --color-incorrect: rgb(131, 131, 131);
+  --color-incorrect: rgb(99, 99, 99);
   --color-accent: rgb(13, 47, 102);
   --color-input-text: rgb(51, 51, 51);
   --color-validate-text: white;
+  --color-bg-accent: rgb(138, 138, 138);
 }
 
 * {

@@ -13,7 +13,7 @@ function KeyLisitner({ currentKey }) {
     };
   }, []);
 
-  return <div className="app-key-listiner"></div>;
+  return <div className="game-key-listiner"></div>;
 }
 
 export default KeyLisitner;

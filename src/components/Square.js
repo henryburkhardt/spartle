@@ -22,11 +22,7 @@ class Square extends Component {
   }
   render() {
     const classes = this.validate();
-    return (
-      <div className={classes}>
-        <p>{this.props.content}</p>
-      </div>
-    );
+    return <div className={classes}>{this.props.content}</div>;
   }
 }
 

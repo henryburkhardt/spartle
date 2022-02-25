@@ -14,7 +14,7 @@ class Key extends Component {
         className={this.props.buttonClass}
         onClick={() => this.handleClick()}
       >
-        {this.props.letter}
+        {this.props.letter.toUpperCase()}
       </button>
     );
   }
