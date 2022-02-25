@@ -3,12 +3,8 @@ import Row from "./Row";
 import words from "../words.json";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Timer from "./Timer";
 import "./Game.css";
 
-import Keyboard from "./Keyboard";
-
-const guesses = 6;
 let word;
 class Game extends Component {
   state = {
@@ -28,6 +24,7 @@ class Game extends Component {
   }
 
   nextRow(guess) {
+    //handle keyboard coloring Arrays
     let incorrect = this.state.letters.incorrectLetters;
     let allcorrect = this.state.letters.allcorrectLetters;
     let partialcorrect = this.state.letters.partialCorrectLetter;
@@ -49,13 +46,15 @@ class Game extends Component {
         partialCorrectLetter: partialcorrect,
       },
     });
+
+    //set row focus
     const nrow = this.state.curRow + 1;
     this.setState({
       curRow: nrow,
     });
   }
 
-  wordNotFound() {
+  notFoundToast() {
     toast.warning("Word does not exist!", {
       position: "top-center",
       autoClose: 1000,
@@ -68,7 +67,7 @@ class Game extends Component {
     });
   }
 
-  correct() {
+  correctToast() {
     toast.success("Nice job! Spartle correct.", {
       position: "top-center",
       autoClose: false,
@@ -81,7 +80,7 @@ class Game extends Component {
     });
   }
 
-  gameOver() {
+  gameOverToast() {
     const message =
       "😢 You've used up all your guesses. The Spartle today was \"" +
       word +
@@ -101,23 +100,26 @@ class Game extends Component {
   render() {
     this.getWord();
     let rows = [];
-    for (let i = 0; i < guesses; i++) {
+    for (let i = 0; i < 6; i++) {
       let freeze;
       if (i === this.state.curRow) {
         freeze = false;
       } else {
         freeze = true;
       }
+
       rows.push(
         <Row
-          word={word}
           key={i}
+          currentKey={this.props.currentKey}
+          word={word}
+          wordLength={word.split("").length}
           rowPosition={i}
           freeze={freeze}
           nextRow={(x) => this.nextRow(x)}
-          wordNotFound={() => this.wordNotFound()}
-          correct={() => this.correct()}
-          gameOver={() => this.gameOver()}
+          notFoundToast={() => this.notFoundToast()}
+          correctToast={() => this.correctToast()}
+          gameOverToast={() => this.gameOverToast()}
         />
       );
     }
@@ -129,8 +131,7 @@ class Game extends Component {
           hideProgressBar={false}
           closeOnClick
         />
-        <ToastContainer />
-        <div>{rows}</div>
+        {rows}
         {/* <Keyboard
           incorrect={this.state.letters.incorrectLetters}
           correct={this.state.letters.allcorrectLetters}

@@ -1,0 +1,6 @@
+.game-row {
+  display: inline-block;
+  white-space: nowrap;
+  /* overflow-x: auto; */
+  width: 100%;
+}

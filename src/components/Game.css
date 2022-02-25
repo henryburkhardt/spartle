@@ -1,16 +1,3 @@
-.timer {
-  color: rgb(184, 184, 184);
-  font-size: 25px;
-  margin-bottom: 10px;
-}
-.Footer {
-  color: grey;
-  text-decoration: underline;
-}
-
-.Row {
-  display: inline-block;
-  white-space: nowrap;
-  /* overflow-x: auto; */
-  width: 100%;
+.game {
+  overflow-y: auto;
 }

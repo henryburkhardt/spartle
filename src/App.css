@@ -7,6 +7,7 @@
   --color-input-text: rgb(51, 51, 51);
   --color-validate-text: white;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -16,20 +17,19 @@
   background: transparent;
 }
 
-body {
+.app {
   background-color: rgb(255, 255, 255);
-}
-
-.App {
   text-align: center;
+  width: 100vw;
+  height: 100vh;
 }
 
-.title {
+.app-header-title {
   font-family: "Bitter", serif;
   color: var(--color-accent);
 }
 
-.header {
+.app-header {
   background-color: white;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -42,13 +42,8 @@ body {
   justify-content: space-between;
 }
 
-.game {
-  /* height: 60vh; */
-  overflow-y: auto;
-}
-
-.header-left,
-.header-right {
+.app-header-left,
+.app-header-right {
   padding-left: 20px;
   padding-right: 20px;
   color: var(--color-accent);

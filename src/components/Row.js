@@ -1,35 +1,30 @@
 import { Component } from "react";
 import Square from "./Square.js";
 import dictionary from "../dictionary.json";
+import React, { useEffect } from "react";
+import KeyLisitner from "./KeyListiner.js";
 
 class Row extends Component {
-  constructor(props) {
-    super(props);
-    this.wordLen = this.props.word.split("").length;
-  }
-
   state = {
-    focus: 0,
-    check: false,
-    freeze: this.props.freeze,
-    word: this.props.word.split(""),
+    focus: -1,
+    checkStatus: false,
     allCorrect: false,
-    guessArr: Array(this.wordLen),
-    guessStr: "",
-    correct: [],
-    partial: [],
-    incorrect: [],
+    guessArr: Array(0),
+    currentKey: "",
   };
+
   nextSpace() {
     const focus = this.state.focus + 1;
-    if (focus < this.wordLen) {
+    if (focus < this.props.wordLength) {
       this.setState({ focus: focus });
     }
   }
   backSpace() {
     const focus = this.state.focus - 1;
-    if (focus >= 0) {
-      this.setState({ focus: focus });
+    const guess = [...this.state.guessArr];
+    guess.splice(focus + 1);
+    if (focus >= -1) {
+      this.setState({ focus: focus, guessArr: guess });
     }
   }
 
@@ -43,71 +38,108 @@ class Row extends Component {
   }
 
   submit() {
-    if (this.state.focus === this.wordLen - 1 && !this.props.freeze) {
-      const real = this.lookUpWord(this.state.guessStr);
-      if (this.state.guessStr === this.props.word) {
+    if (this.state.focus === this.props.wordLength - 1 && !this.props.freeze) {
+      const guessStr = this.state.guessArr.join("");
+      const real = this.lookUpWord(guessStr);
+      if (guessStr === this.props.word) {
         //word is correct
-        this.props.correct();
+        this.props.correctToast();
         this.setState({
-          check: true,
+          checkStatus: true,
         });
         return;
       } else if (!real) {
         //word is invalid
-        this.props.wordNotFound();
+        this.props.notFoundToast();
       } else {
         // word is valid, not correct
         this.setState({
-          check: true,
+          checkStatus: true,
         });
         if (this.props.rowPosition === 5) {
-          this.props.gameOver();
+          this.props.gameOverToast();
         } else {
-          const guess = this.state.guessArr;
-          this.props.nextRow(guess);
+          this.props.nextRow(this.state.guessArr);
         }
       }
     }
   }
+
   guess(position, value) {
     let curGuess = this.state.guessArr;
     curGuess[position] = value;
     this.setState({
       guessArr: curGuess,
-      guessStr: curGuess.join(""),
     });
+  }
+  componentDidUpdate() {}
+
+  currentKey(e) {
+    if (this.props.freeze) {
+      return;
+    }
+
+    e.preventDefault();
+    if (e.key === "Enter") {
+      this.submit();
+    } else if (e.key === "Backspace") {
+      this.backSpace();
+    } else if (
+      !(
+        (e.keyCode >= 65 && e.keyCode <= 90) ||
+        (e.keyCode >= 97 && e.keyCode <= 122)
+      )
+    ) {
+      return;
+    } else {
+      const key = e.key.toLowerCase();
+      const guess = this.state.guessArr;
+      if (this.state.guessArr.length < this.props.wordLength) {
+        guess.push(key);
+      }
+      this.setState({
+        currentKey: key,
+        guessArr: guess,
+      });
+      this.nextSpace();
+    }
   }
 
   render() {
     let squares = [];
-    for (let i = 0; i < this.wordLen; i++) {
-      let status = 0;
+    for (let i = 0; i < this.props.wordLength; i++) {
+      let focus = 0;
 
       if (this.state.focus === i) {
-        status = true;
+        focus = true;
       } else {
-        status = false;
+        focus = false;
       }
-
-      let letter = this.props.word[i];
+      let content = this.state.guessArr[i];
 
       squares.push(
         <Square
+          key={i}
+          content={content}
+          position={i}
+          focus={focus}
+          check={this.state.checkStatus}
+          freeze={this.props.freeze}
+          letter={this.props.word[i]}
+          word={this.props.word}
+          updateGuess={(position, value) => this.guess(position, value)}
           backSpace={() => this.backSpace()}
           nextSpace={() => this.nextSpace()}
           submit={() => this.submit()}
-          key={i}
-          position={i}
-          focus={status}
-          check={this.state.check}
-          freeze={this.props.freeze}
-          letter={letter}
-          word={this.state.word}
-          updateGuess={(position, value) => this.guess(position, value)}
         />
       );
     }
-    return <div className="Row">{squares}</div>;
+    return (
+      <div className="game-row">
+        <KeyLisitner currentKey={(e) => this.currentKey(e)} />
+        {squares}
+      </div>
+    );
   }
 }
 

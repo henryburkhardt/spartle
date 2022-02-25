@@ -1,17 +1,21 @@
-import logo from "./logo.svg";
 import Game from "./components/Game";
-import "./App.css";
-import Keyboard from "./components/Keyboard";
-import { Helmet } from "react-helmet";
+import ReactGA from "react-ga";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode, faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Component, useEffect } from "react";
+import "./App.css";
+ReactGA.initialize("UA-132829761-3");
 
-function App() {
-  const info = () => {
+class App extends Component {
+  state = {
+    currentKey: "",
+  };
+
+  infoToast() {
     toast.info(
-      "Welcome to Spartle! Spartle is an open source clone of the popular game Wordle, personalized for SPA. A new Spartle word (relating to SPA) will be set every week day.",
+      "Spartle is an open source SPA-themed version of Wordle. A new Spartle word (relating to SPA) will be created every week day.",
       {
         position: "top-center",
         autoClose: 5000,
@@ -21,28 +25,33 @@ function App() {
         toastId: "info",
       }
     );
-  };
-  return (
-    <div className="App">
-      <Helmet>
-        <title>Spartle</title>
-      </Helmet>
-      <div className="header">
-        <div className="header-left">
-          <a href="https://github.com/henryburkhardt/spartle" target="_blank">
-            <FontAwesomeIcon icon={faCode} />
-          </a>
+  }
+  componentDidMount() {
+    let contents;
+    contents = window.location.pathname + window.location.search;
+    ReactGA.pageview(contents);
+  }
+
+  render() {
+    return (
+      <div className="app">
+        <div className="app-header">
+          <div className="app-header-left">
+            <a href="https://github.com/henryburkhardt/spartle" target="_blank">
+              <FontAwesomeIcon icon={faCode} />
+            </a>
+          </div>
+          <h1 className="app-header-title">Spartle</h1>
+          <div className="app-header-right">
+            <a onClick={() => this.infoToast()}>
+              <FontAwesomeIcon icon={faQuestionCircle} />
+            </a>
+          </div>
         </div>
-        <h1 className="title">Spartle</h1>
-        <div className="header-right">
-          <a onClick={() => info()}>
-            <FontAwesomeIcon icon={faQuestionCircle} />
-          </a>
-        </div>
+        <Game />
       </div>
-      <Game className="game" />
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

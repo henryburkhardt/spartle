@@ -2,99 +2,30 @@ import { Component, createRef } from "react";
 import "./Square.css";
 
 class Square extends Component {
-  constructor(props) {
-    super(props);
-    this.inputReference = createRef();
-  }
-  state = {
-    content: "",
-    classes: "",
-    disabled: true,
-  };
-
-  handleKeyDown = (e) => {
-    if (this.props.check) {
-      return;
-    }
-
-    if (e.key === "Enter") {
-      this.props.submit();
-    } else if (e.key === "Backspace") {
-      this.props.backSpace(this.props.position);
-      this.setState({
-        content: "",
-      });
-    }
-
-    const value = e.key.toLowerCase();
-    if (
-      !(
-        (e.keyCode >= 65 && e.keyCode <= 90) ||
-        (e.keyCode >= 97 && e.keyCode <= 122)
-      )
-    ) {
-      return;
-    } else {
-      this.setState({
-        content: value,
-      });
-      this.props.updateGuess(this.props.position, value);
-      this.props.nextSpace();
-    }
-  };
-
-  handleChange = (e) => {};
-
-  componentDidMount() {
-    if (this.props.position === 0 && !this.props.freeze && !this.props.check) {
-      this.inputReference.current.focus();
-      this.setState({
-        disabled: false,
-      });
-    }
-  }
-
-  handleClick(e) {
-    e.preventDefault();
-    console.log("ck");
-  }
-  componentDidUpdate() {
-    if (this.props.focus && !this.props.freeze && !this.props.check) {
-      this.inputReference.current.focus();
-    }
-  }
-
   validate() {
     let classes;
     if (this.props.check) {
-      if (this.props.letter === this.state.content) {
+      if (this.props.letter === this.props.content) {
         //all correct
-        classes = "square all_correct animate";
-      } else if (this.props.word.includes(this.state.content)) {
+        classes = "game-row-square all_correct animate";
+      } else if (this.props.word.includes(this.props.content)) {
         //partial correct
-        classes = "square one_correct animate";
+        classes = "game-row-square one_correct animate";
       } else {
         //not correct
-        classes = "square incorrect animate";
+        classes = "game-row-square incorrect animate";
       }
     } else {
-      classes = "square";
+      classes = "game-row-square";
     }
     return classes;
   }
   render() {
     const classes = this.validate();
     return (
-      <input
-        className={classes}
-        maxLength={1}
-        onKeyDown={this.handleKeyDown.bind(this)}
-        onChange={this.handleChange}
-        // disabled={!this.props.focus}
-        ref={this.inputReference}
-        value={this.state.content}
-        onClick={(e) => this.handleClick(e)}
-      ></input>
+      <div className={classes}>
+        <p>{this.props.content}</p>
+      </div>
     );
   }
 }
