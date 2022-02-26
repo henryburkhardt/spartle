@@ -63,12 +63,9 @@ import Row from "./components/Row.js";
 export default function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Spartle />}></Route>
-          <Route path="/embed" element={<SpartleEmbed />}></Route>
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<SpartleEmbed />} />
+      </Routes>
     </div>
   );
 }

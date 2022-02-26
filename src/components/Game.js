@@ -56,9 +56,9 @@ class Game extends Component {
   }
 
   notFoundToast() {
-    toast.warning("Word does not exist!", {
+    toast("Not in word list", {
       position: "top-center",
-      autoClose: 1000,
+      autoClose: 500,
       hideProgressBar: true,
       closeOnClick: false,
       pauseOnHover: true,

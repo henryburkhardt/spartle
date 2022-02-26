@@ -11,6 +11,7 @@ class Row extends Component {
     allCorrect: false,
     guessArr: Array(0),
     currentKey: "",
+    shake: false,
   };
 
   nextSpace() {
@@ -51,6 +52,9 @@ class Row extends Component {
       } else if (!real) {
         //word is invalid
         this.props.notFoundToast();
+        this.setState({
+          shake: true,
+        });
       } else {
         // word is valid, not correct
         this.setState({
@@ -72,7 +76,6 @@ class Row extends Component {
       guessArr: curGuess,
     });
   }
-  componentDidUpdate() {}
 
   currentKey(e) {
     if (this.props.freeze) {
@@ -109,6 +112,12 @@ class Row extends Component {
     this.nextSpace();
   }
 
+  handleAnimationEnd() {
+    this.setState({
+      shake: false,
+    });
+  }
+
   render() {
     let squares = [];
     for (let i = 0; i < this.props.wordLength; i++) {
@@ -124,6 +133,7 @@ class Row extends Component {
       squares.push(
         <Square
           key={i}
+          shake={this.state.shake}
           content={content}
           position={i}
           focus={focus}
@@ -139,7 +149,10 @@ class Row extends Component {
       );
     }
     return (
-      <div className="game-row">
+      <div
+        className="game-row"
+        onAnimationEnd={() => this.handleAnimationEnd()}
+      >
         <KeyLisitner currentKey={(e) => this.currentKey(e)} />
         {squares}
       </div>

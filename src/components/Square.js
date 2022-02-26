@@ -1,4 +1,7 @@
 import { Component, createRef } from "react";
+import ReactDOM from "react-dom";
+import { onAnimationStart, onAnimationEnd } from "react";
+
 import "./Square.css";
 
 class Square extends Component {
@@ -21,7 +24,10 @@ class Square extends Component {
     return classes;
   }
   render() {
-    const classes = this.validate();
+    let classes = this.validate();
+    if (this.props.shake) {
+      classes = "game-row-square shake";
+    }
     return <div className={classes}>{this.props.content}</div>;
   }
 }
