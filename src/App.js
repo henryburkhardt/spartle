@@ -62,11 +62,11 @@ import Row from "./components/Row.js";
 
 export default function App() {
   return (
-    <div className="App">
+    <>
       <Routes>
         <Route exact path="/" element={<Spartle />} />
         <Route exact path="/embed" element={<SpartleEmbed />} />
       </Routes>
-    </div>
+    </>
   );
 }

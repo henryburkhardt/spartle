@@ -34,22 +34,22 @@ class SpartleEmbed extends Component {
 
   render() {
     return (
-      <div className="app">
-        <div className="app-header">
-          <div className="app-header-left">
+      <>
+        <div className="header">
+          <div className="header-left">
             <a href="https://github.com/henryburkhardt/spartle" target="_blank">
               <FontAwesomeIcon icon={faCode} />
             </a>
           </div>
-          <h1 className="app-header-title">Spartle</h1>
-          <div className="app-header-right">
+          <h1 className="header-title">Spartle</h1>
+          <div className="header-right">
             <a onClick={() => this.infoToast()}>
               <FontAwesomeIcon icon={faQuestionCircle} />
             </a>
           </div>
         </div>
         <Game showKeyboard={false} />
-      </div>
+      </>
     );
   }
 }
