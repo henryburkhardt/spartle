@@ -99,9 +99,9 @@ class Game extends Component {
   }
 
   setKey(letter) {
-    if (letter === "DEL") {
+    if (letter === "⌫") {
       this.refs.activeRow.backSpace();
-    } else if (letter === "ENTER") {
+    } else if (letter === "GO") {
       this.refs.activeRow.submit();
     } else {
       this.refs.activeRow.handleLetter(letter);

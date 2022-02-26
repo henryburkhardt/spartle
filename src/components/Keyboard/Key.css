@@ -1,16 +1,44 @@
 .game-keyboard-key {
-  border: 1px solid black;
   padding: 4px;
   margin: 1px;
   height: 50px;
   width: 35px;
-  border-radius: 2px;
+  border-radius: 5px;
   background-color: rgb(216, 216, 216);
   border: none;
   position: relative;
   font-size: 16px;
   color: black;
   font-weight: 550;
+}
+
+.extraButton {
+  padding: 4px;
+  margin: 1px;
+  height: 50px;
+  border-radius: 5px;
+  position: relative;
+  font-size: 15px;
+  font-weight: 550;
+  background-color: rgb(216, 216, 216);
+}
+
+@media only screen and (max-width: 400px) {
+  .game-keyboard-key {
+    height: 60px;
+    width: 33px;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-right: 2px;
+    margin-left: 2px;
+  }
+  .extraButton {
+    height: 60px;
+    margin-top: 0px;
+    font-size: 20px;
+    margin-right: 4px;
+    margin-left: 4px;
+  }
 }
 
 .game-keyboard-key-correct {
@@ -26,17 +54,4 @@
 .game-keyboard-key-incorrect {
   background-color: var(--color-incorrect);
   color: white;
-}
-
-.extraButton {
-  border: 1px solid black;
-  padding: 4px;
-  margin: 1px;
-  height: 50px;
-  border-radius: 2px;
-  border: none;
-  position: relative;
-  font-size: 15px;
-  font-weight: 550;
-  background-color: rgb(216, 216, 216);
 }

@@ -3,3 +3,11 @@
   bottom: 0;
   width: 100%;
 }
+
+@media only screen and (max-width: 400px) {
+  .game-keyboard {
+    padding-bottom: 5px;
+    padding-top: 2px;
+    background-color: rgb(236, 236, 236);
+  }
+}

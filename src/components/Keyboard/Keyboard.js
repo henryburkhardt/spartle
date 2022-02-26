@@ -30,8 +30,8 @@ class Keyboard extends Component {
     let row2 = [];
     let row3 = [
       <Key
-        letter="ENTER"
-        key="Enter"
+        letter="GO"
+        key="Go"
         buttonClass="extraButton"
         setKey={(letter) => this.setKey(letter)}
       />,
@@ -69,7 +69,7 @@ class Keyboard extends Component {
 
     row3.push(
       <Key
-        letter="DEL"
+        letter="⌫"
         key="Delete"
         buttonClass="extraButton"
         setKey={(letter) => this.setKey(letter)}

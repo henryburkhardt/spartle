@@ -21,8 +21,6 @@
 .app {
   background-color: rgb(255, 255, 255);
   text-align: center;
-  width: 100vw;
-  height: 100vh;
 }
 
 .app-header-title {
@@ -33,7 +31,7 @@
 .app-header {
   background-color: white;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 6px;
   margin-bottom: 10px;
   border-bottom: 1.5px solid var(--color-accent);
   font-size: 15px;
@@ -41,6 +39,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+@media only screen and (max-width: 400px) {
+  .app-header {
+    font-size: 12px;
+  }
 }
 
 .app-header-left,
