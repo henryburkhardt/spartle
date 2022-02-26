@@ -55,7 +55,7 @@
 // }
 
 // export default App;
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Spartle from "./pages/Spartle.js";
 import SpartleEmbed from "./pages/SpartleEmbed.js";
 import Row from "./components/Row.js";
@@ -64,7 +64,8 @@ export default function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<SpartleEmbed />} />
+        <Route exact path="/" element={<Spartle />} />
+        <Route exact path="/embed" element={<SpartleEmbed />} />
       </Routes>
     </div>
   );
