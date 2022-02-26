@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/spartle/static/css/main.6a399412.css",
+    "main.css": "/spartle/static/css/main.9761bfcd.css",
     "main.js": "/spartle/static/js/main.f0c923f7.js",
     "index.html": "/spartle/index.html",
-    "main.6a399412.css.map": "/spartle/static/css/main.6a399412.css.map",
+    "main.9761bfcd.css.map": "/spartle/static/css/main.9761bfcd.css.map",
     "main.f0c923f7.js.map": "/spartle/static/js/main.f0c923f7.js.map"
   },
   "entrypoints": [
-    "static/css/main.6a399412.css",
+    "static/css/main.9761bfcd.css",
     "static/js/main.f0c923f7.js"
   ]
 }
