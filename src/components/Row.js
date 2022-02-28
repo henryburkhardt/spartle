@@ -3,6 +3,7 @@ import Square from "./Square.js";
 import dictionary from "../json/dictionary.json";
 import React, { useEffect } from "react";
 import KeyLisitner from "./KeyListiner.js";
+import ReactGA from "react-ga";
 
 class Row extends Component {
   state = {
@@ -48,6 +49,11 @@ class Row extends Component {
         this.setState({
           checkStatus: true,
         });
+        ReactGA.event({
+          category: "completed_Spartle",
+          action: "submit",
+          label: "correct",
+        });
         return;
       } else if (!real) {
         //word is invalid
@@ -62,6 +68,11 @@ class Row extends Component {
         });
         if (this.props.rowPosition === 5) {
           this.props.gameOverToast();
+          ReactGA.event({
+            category: "completed_Spartle",
+            action: "submit",
+            label: "incorrect",
+          });
         } else {
           this.props.nextRow(this.state.guessArr);
         }
