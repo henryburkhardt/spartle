@@ -19,9 +19,10 @@ class Game extends Component {
   };
 
   getWord() {
-    let dateObj = new Date();
-    let newdate = dateObj.toLocaleDateString("en-US");
-    word = words[newdate];
+    // let dateObj = new Date();
+    // let newdate = dateObj.toLocaleDateString("en-US");
+    // word = words[newdate];
+    word = "gone";
   }
 
   nextRow(guess) {
